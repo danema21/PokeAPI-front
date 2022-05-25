@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import http from "../http-common";
 import PokeAPIServices from "../services/PokeAPIServices";
+import "./style.css";
 
 const Pokedex = () => {
     const pokemonInitialState = {
@@ -36,14 +37,19 @@ const Pokedex = () => {
         });
 
         PokeAPIServices.getPokedexEntry(id).then(response => {
-            setDescription(response.data.flavor_text_entries[0].flavor_text);
+            let entriesArr = response.data.flavor_text_entries;
+            let i = 0;
+            while(i <= entriesArr.length && entriesArr[i].language.name != "es"){
+                i++;
+            }
+            setDescription(response.data.flavor_text_entries[i].flavor_text);
         }).catch(e => {
             console.log(e);
         })
     }
 
     const getRandom = () => {
-        retrievePokemon(Math.round(Math.random()*150 + 1));
+        retrievePokemon(Math.round(Math.random()*801 + 1));
     }
 
     return(
