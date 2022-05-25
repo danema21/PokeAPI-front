@@ -15,6 +15,10 @@ const Pokedex = () => {
     const [pokemon, setPokemon] = useState(pokemonInitialState);
     const [description, setDescription] = useState("When several of\nthese POKéMON\ngather, their\felectricity could\nbuild and cause\nlightning storms.");
 
+    useEffect(()=>{
+        getPokemonOfTheDay();
+    }, []);
+
     const emptyData = () => {
         setPokemon({
             id: null,
@@ -39,7 +43,7 @@ const Pokedex = () => {
         PokeAPIServices.getPokedexEntry(id).then(response => {
             let entriesArr = response.data.flavor_text_entries;
             let i = 0;
-            while(i <= entriesArr.length && entriesArr[i].language.name != "es"){
+            while(i <= entriesArr.length && entriesArr[i].language.name != "en"){
                 i++;
             }
             setDescription(response.data.flavor_text_entries[i].flavor_text);
@@ -52,10 +56,16 @@ const Pokedex = () => {
         retrievePokemon(Math.round(Math.random()*801 + 1));
     }
 
+    const getPokemonOfTheDay = () => {
+        const date = new Date();
+        const pokemonId = ((date.getFullYear() * date.getDate() * (date.getMonth()+1)) % 802) + 1;
+        retrievePokemon(pokemonId);
+    }
+
     return(
         <div>
             <button onClick={getRandom}>Random</button>
-            <h1>{pokemon.name} #{pokemon.id}</h1>
+            <h1 className="pokemon-name">{pokemon.name} #{pokemon.id}</h1>
             <img src={pokemon.sprites.front_default} alt="sprite.png"/>
             <p>{description}</p>
         </div>
