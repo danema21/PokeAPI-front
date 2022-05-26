@@ -17,3 +17,4 @@ Se debe tener [node](https://nodejs.org/es/) instalado.
 
 - [axios](https://github.com/axios/axios) ➡ Cliente HTTP basado en promesas para el buscador y node.js
 
+-[react-bootstrap](https://react-bootstrap.github.io/) ➡ El framework de front-end más popular reconstruido para React.

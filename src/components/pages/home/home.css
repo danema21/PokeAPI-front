@@ -1,0 +1,46 @@
+.pokemon-image-col {
+    text-align: center;
+}
+
+.pokemon-image {
+    max-width: 250px !important;
+    filter: brightness(0.0) !important;
+}
+
+.pokedex-invitation-col {
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.pokedex-invitation-col div {
+    margin: 0 auto;
+}
+
+.pokedex-invitation {
+    font-weight: bold;
+    color: black;
+}
+
+.guess-form {
+    text-align: center;
+    text-transform: capitalize;
+    margin-top: 20px;
+    color: black;
+}
+
+.guess-btn {
+    font-size: x-large !important;
+    font-weight: bold !important;
+    width: 280px !important;
+    height: 60px !important;
+    background-color: #55F494 !important;
+    border: none !important;
+    border-radius: 100px !important;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.guess-btn:hover{
+    background-color: #41b871 !important;
+}

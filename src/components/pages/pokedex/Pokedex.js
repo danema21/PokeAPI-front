@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import http from "../http-common";
-import PokeAPIServices from "../services/PokeAPIServices";
-import "./style.css";
+import http from "../../../http-common";
+import PokeAPIServices from "../../../services/PokeAPIServices";
+import "./pokedex.css";
 
 const Pokedex = () => {
     const pokemonInitialState = {
@@ -62,11 +62,14 @@ const Pokedex = () => {
         retrievePokemon(pokemonId);
     }
 
+    const whosThatPokemonImg = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/";
+
     return(
         <div>
             <button onClick={getRandom}>Random</button>
             <h1 className="pokemon-name">{pokemon.name} #{pokemon.id}</h1>
             <img src={pokemon.sprites.front_default} alt="sprite.png"/>
+            
             <p>{description}</p>
         </div>
     );
