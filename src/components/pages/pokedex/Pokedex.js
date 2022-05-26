@@ -10,6 +10,7 @@ const Pokedex = () => {
     const [search, setSearch] = useState("");
     const [pokemon, setPokemon] = useState({});
     const [description, setDescription] = useState("");
+    const [defaultSprite, setDefaultSprite] = useState(true);
 
     useEffect(()=>{
         getPokemonOfTheDay();
@@ -59,6 +60,18 @@ const Pokedex = () => {
         });
     }
 
+    const prevPokemon = () => {
+        if(pokemon.id > 1){
+            retrievePokemon(pokemon.id - 1);
+        }
+    }
+
+    const nextPokemon = () => {
+        if(pokemon.id < 151){
+            retrievePokemon(pokemon.id + 1);
+        }
+    }
+
     return(
         <Container>
             <Row>
@@ -71,14 +84,22 @@ const Pokedex = () => {
                     </Row>
                     <Row className="mb-4">
                         <Col sm={6}>
-                            <div className="left-right-btn">
-                                <div className="up-down-btn"></div>
+                            <div className="toy-btns">
+                                <div className="left-right-btn">
+                                    <Button className="toy-btn" onClick={prevPokemon}>L</Button>
+                                    <div className="up-down-btn">
+                                        <Button className="toy-btn" onClick={() => setDefaultSprite(true)}>U</Button>
+                                        <Button className="toy-btn" onClick={() => setDefaultSprite(false)}>D</Button>
+                                    </div>
+                                    <Button className="toy-btn" onClick={nextPokemon}>R</Button>
+                                </div>
                             </div>
                         </Col>
                         <Col sm={6}>
                             <div className="screen-layout">
                                 <div className="screen">
-                                    {pokemon.sprites && <Image src={pokemon.sprites.front_default} alt="sprite.png" className="sprite"/>}
+                                    {pokemon.sprites && <Image src={defaultSprite ? pokemon.sprites.front_default : pokemon.sprites.back_default} alt="sprite.png" className="sprite" />}
+                                    <Image className="scanline" src={require("../../../assets/scanlines.png")}/>
                                 </div>
                             </div>
                         </Col>
