@@ -1,3 +1,4 @@
+import { type } from "@testing-library/user-event/dist/type";
 import { useEffect, useState } from "react";
 import { Col, Container, Row, Button, Image } from "react-bootstrap";
 import http from "../../../http-common";
@@ -5,29 +6,17 @@ import PokeAPIServices from "../../../services/PokeAPIServices";
 import "./pokedex.css";
 
 const Pokedex = () => {
-    const pokemonInitialState = {
-        id: 25,
-        name: "pikachu",
-        sprites: {
-            front_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
-        }
-    }
     
-    const [pokemon, setPokemon] = useState(pokemonInitialState);
-    const [description, setDescription] = useState("When several of\nthese POKéMON\ngather, their\felectricity could\nbuild and cause\nlightning storms.");
+    const [search, setSearch] = useState("");
+    const [pokemon, setPokemon] = useState({});
+    const [description, setDescription] = useState("");
 
     useEffect(()=>{
         getPokemonOfTheDay();
     }, []);
 
     const emptyData = () => {
-        setPokemon({
-            id: null,
-            name: "",
-            sprites: {
-                front_default: ""
-            }
-        });
+        setPokemon({});
         setDescription("");
     }
 
@@ -59,24 +48,25 @@ const Pokedex = () => {
         retrievePokemon(pokemonId);
     }
 
-    const whosThatPokemonImg = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/";
+    //no funciona como debería, me da una lista de 20 pokemones en vez del buscado
+    const searchPokemon = () => {
+        emptyData();
+        PokeAPIServices.getByName(search).then(response => {
+            setPokemon(response.data);
+            console.log(response.data);
+        }).catch(e => {
+            console.log(e);
+        });
+    }
 
     return(
         <Container>
             <Row>
                 <Col lg={6}>
-                    {/*
-                    <div>
-                        <h1 className="pokemon-name">{pokemon.name} #{pokemon.id}</h1>
-                        <img src={pokemon.sprites.front_default} alt="sprite.png"/>
-                        
-                        <p>{description}</p>
-                    </div>
-                    */}
                     <Row className="mb-4">
                         <div className="search-form">
-                            <input type="text" placeholder="Search by name or ID..."/>
-                            <Button className="go-btn">Go</Button>
+                            <input type="text" placeholder="Search by name or ID..." onChange={(e) => setSearch(e.target.value)}/>
+                            <Button className="go-btn" onClick={searchPokemon}>Go</Button>
                         </div>
                     </Row>
                     <Row className="mb-4">
@@ -88,45 +78,49 @@ const Pokedex = () => {
                         <Col sm={6}>
                             <div className="screen-layout">
                                 <div className="screen">
-                                    <Image src="" alt="sprite.png" className="sprite"/>
+                                    {pokemon.sprites && <Image src={pokemon.sprites.front_default} alt="sprite.png" className="sprite"/>}
                                 </div>
                             </div>
                         </Col>
                     </Row>
                     <Row>
                         <h2 className="info">Description</h2>
-                        <p className="info">pokemon pokedex description</p>
+                        <p className="info">{description}</p>
                     </Row>
                 </Col>
                 <Col lg={6}>
-                    <h1 className="info">Pikachu #25</h1>
+                    <h1 className="info pokemon-name">{pokemon.name} {"#" + pokemon.id}</h1>
+                    
                     <h2 className="info">Type</h2>
-                    <span className="type info">electric</span>
+                    {pokemon.types && pokemon.types.map((data, index) => (
+                        <span key={index} className="type info">{data.type.name}</span>
+                    ))}
+
                     <h2 className="info mt-4">Base stats</h2>
                     <div className="ms-5 mt-4 me-5 mb-5">
                         <div className="stat-row">
                             <h4>Hp:</h4>
-                            <h4>35</h4>
+                            <h4>{pokemon.stats && pokemon.stats[0].base_stat}</h4>
                         </div>
                         <div className="stat-row">
                             <h4>Attack:</h4>
-                            <h4>18</h4>
+                            <h4>{pokemon.stats && pokemon.stats[1].base_stat}</h4>
                         </div>
                         <div className="stat-row">
                             <h4>Defense:</h4>
-                            <h4>14</h4>
+                            <h4>{pokemon.stats && pokemon.stats[2].base_stat}</h4>
                         </div>
                         <div className="stat-row">
                             <h4>Special Attack:</h4>
-                            <h4>30</h4>
+                            <h4>{pokemon.stats && pokemon.stats[3].base_stat}</h4>
                         </div>
                         <div className="stat-row">
                             <h4>Special Defense:</h4>
-                            <h4>20</h4>
+                            <h4>{pokemon.stats && pokemon.stats[4].base_stat}</h4>
                         </div>
                         <div className="stat-row">
                             <h4>Speed:</h4>
-                            <h4>90</h4>
+                            <h4>{pokemon.stats && pokemon.stats[5].base_stat}</h4>
                         </div>
                     </div>
                 </Col>
