@@ -94,17 +94,45 @@ const Pokedex = () => {
                         </Col>
                     </Row>
                     <Row>
-                        <h1>Description</h1>
-                        <p>Comienzo dedescription</p>
+                        <h2 className="info">Description</h2>
+                        <p className="info">pokemon pokedex description</p>
                     </Row>
                 </Col>
                 <Col lg={6}>
-                    <h1 className="info">Nombre del pokemon</h1>
+                    <h1 className="info">Pikachu #25</h1>
                     <h2 className="info">Type</h2>
-                    <h2 className="info">Stats</h2>
+                    <span className="type info">electric</span>
+                    <h2 className="info mt-4">Base stats</h2>
+                    <div className="ms-5 mt-4 me-5 mb-5">
+                        <div className="stat-row">
+                            <h4>Hp:</h4>
+                            <h4>35</h4>
+                        </div>
+                        <div className="stat-row">
+                            <h4>Attack:</h4>
+                            <h4>18</h4>
+                        </div>
+                        <div className="stat-row">
+                            <h4>Defense:</h4>
+                            <h4>14</h4>
+                        </div>
+                        <div className="stat-row">
+                            <h4>Special Attack:</h4>
+                            <h4>30</h4>
+                        </div>
+                        <div className="stat-row">
+                            <h4>Special Defense:</h4>
+                            <h4>20</h4>
+                        </div>
+                        <div className="stat-row">
+                            <h4>Speed:</h4>
+                            <h4>90</h4>
+                        </div>
+                    </div>
                 </Col>
             </Row>
             
+            <div className="footer fixed-bottom">©2022 Copyright Pokédex Tecnólogo en Informática</div>
         </Container>
     );
 }

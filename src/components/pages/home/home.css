@@ -6,9 +6,13 @@
     text-align: center;
 }
 
-.pokemon-image {
+.pokemon-image-hidden {
     max-width: 250px !important;
     filter: brightness(0.0) !important;
+}
+
+.pokemon-image {
+    max-width: 250px !important;
 }
 
 .pokedex-invitation-col {
@@ -28,7 +32,6 @@
 
 .guess-form {
     text-align: center;
-    text-transform: capitalize;
     margin-top: 20px;
     color: black;
 }

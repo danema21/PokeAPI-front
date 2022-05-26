@@ -4,9 +4,10 @@ import PokeAPIServices from "../../../services/PokeAPIServices";
 import "./home.css";
 
 const Home = () => {
-    const imageCommonURL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/";
+    const officialArtworkURL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/";
 
     const [todayPokemon, setTodayPokemon] = useState({});
+    const [hide, setHide] = useState(true);
 
     useEffect(() => {
         getPokemonOfTheDay();
@@ -27,6 +28,10 @@ const Home = () => {
         retrievePokemon(pokemonId);
     }
 
+    const showPokemon = () => {
+        setHide(false);
+    }
+
     return(
         <Container className="container" fluid>
             {todayPokemon && 
@@ -35,7 +40,7 @@ const Home = () => {
                         {/*empty solo para centrar*/}
                     </Col>
                     <Col xs={12} sm={4} md={4} className="pokemon-image-col">
-                        <Image fluid className="pokemon-image" src={imageCommonURL + todayPokemon.id + ".png"} />
+                        <Image fluid className={hide ? "pokemon-image-hidden" : "pokemon-image"} src={officialArtworkURL + todayPokemon.id + ".png"} />
                     </Col>
                     <Col xs={12} sm={5} md={4} className="pokedex-invitation-col">
                         <div>
@@ -45,8 +50,8 @@ const Home = () => {
                 </Row>
             }
             <div className="guess-form">
-                <h1>???</h1>
-                <Button className="guess-btn shadow">who's that pokémon?</Button>
+                {hide ? <h1>???</h1> : <h1>It's {todayPokemon.name} {"#" + todayPokemon.id}</h1>}
+                <Button className="guess-btn shadow" onClick={showPokemon}>who's that pokémon?</Button>
             </div>
             
             
