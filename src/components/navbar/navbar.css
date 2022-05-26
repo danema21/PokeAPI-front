@@ -3,10 +3,11 @@
 }
 
 .nav-image {
-    width: 140px;
+    width: 150px;
+    
 }
 
-.link {
+.nav-link {
     font-size: x-large;
-    margin-right: 10px;
+    margin-left: 10px;
 }
