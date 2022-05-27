@@ -14,6 +14,10 @@ const Pokedex = () => {
         getPokemonOfTheDay();
     }, []);
 
+    useEffect(()=>{
+        getDescription();
+    }, [pokemon]);
+
     const emptyData = () => {
         setPokemon({});
         setDescription("");
@@ -28,8 +32,10 @@ const Pokedex = () => {
         }).catch(e => {
             console.log(e);
         });
+    }
 
-        PokeAPIServices.getPokedexEntry(id).then(response => {
+    const getDescription = () => {
+        PokeAPIServices.getPokedexEntry(pokemon.id).then(response => {
             let entriesArr = response.data.flavor_text_entries;
             let i = 0;
             while(i <= entriesArr.length && entriesArr[i].language.name != "en"){
@@ -38,7 +44,7 @@ const Pokedex = () => {
             setDescription(response.data.flavor_text_entries[i].flavor_text);
         }).catch(e => {
             console.log(e);
-        })
+        });
     }
 
     const getPokemonOfTheDay = () => {
@@ -47,9 +53,10 @@ const Pokedex = () => {
         retrievePokemon(pokemonId);
     }
 
-    //no funciona como debería, me da una lista de 20 pokemones en vez del buscado
+
     const searchPokemon = () => {
         emptyData();
+
         PokeAPIServices.getByName(search).then(response => {
             setPokemon(response.data);
             console.log(response.data);
