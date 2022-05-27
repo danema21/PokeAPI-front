@@ -9,7 +9,7 @@ const get = (id) => {
 }
 
 const getByName = (name) => {
-    return http.get(`https://pokeapi.co/api/v2/pokemon?name=${name}`);
+    return http.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
 }
 
 const getPokedexEntry = (id) => {
