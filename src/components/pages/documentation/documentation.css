@@ -1,0 +1,26 @@
+.text-documentation{
+    position: absolute;
+    left: 5%;
+    right: 5%;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: black;
+    padding: 10px;
+}
+
+.fixed-wrapper{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 250px;
+    height: 240px;
+    z-index: 0;
+}
+
+.image-footer{
+    position: fixed;
+    width: 250px;
+    height: 240px;
+    object-fit: cover;
+    object-position: 0px 0px;
+}

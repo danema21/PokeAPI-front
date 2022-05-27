@@ -1,7 +1,5 @@
-import { type } from "@testing-library/user-event/dist/type";
 import { useEffect, useState } from "react";
 import { Col, Container, Row, Button, Image } from "react-bootstrap";
-import http from "../../../http-common";
 import PokeAPIServices from "../../../services/PokeAPIServices";
 import "./pokedex.css";
 
@@ -110,11 +108,11 @@ const Pokedex = () => {
                     </Row>
                 </Col>
                 <Col lg={6}>
-                    <h1 className="info pokemon-name">{pokemon.name} {"#" + pokemon.id}</h1>
+                    {pokemon.name && <h1 className="info pokemon-name">{pokemon.name} {"#" + pokemon.id}</h1>}
                     
                     <h2 className="info">Type</h2>
                     {pokemon.types && pokemon.types.map((data, index) => (
-                        <span key={index} className="type info">{data.type.name}</span>
+                        <span key={index} className={"type info " + data.type.name}>{data.type.name}</span>
                     ))}
 
                     <h2 className="info mt-4">Base stats</h2>
