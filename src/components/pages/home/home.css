@@ -2,6 +2,11 @@
     margin-top: 5vh;
 }
 
+.loading-placeholder{
+    text-align: center;
+    height: 250px;
+}
+
 .pokemon-image-col {
     text-align: center;
 }
@@ -46,7 +51,6 @@
     border-radius: 100px !important;
     margin: 0 auto;
     margin-top: 20px;
-    margin-bottom: 60px;
 }
 
 .guess-btn:hover{

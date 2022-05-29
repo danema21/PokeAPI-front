@@ -82,7 +82,7 @@ const Pokedex = () => {
     }
 
     const nextPokemon = () => {
-        if(pokemon.id < 151){
+        if(pokemon.id < 898){
             retrievePokemon(pokemon.id + 1);
         }
     }
@@ -111,7 +111,7 @@ const Pokedex = () => {
                             </div>
                         </Col>
                         <Col sm={6}>
-                            <div className="screen-layout">
+                            <div className="screen-layout shadow">
                                 <div className="screen">
                                     {(isLoading === false && pokemon.sprites) ? <Image src={defaultSprite ? pokemon.sprites.front_default : pokemon.sprites.back_default} alt="sprite.png" className="sprite" /> : <LoadingSpinner/>}
                                     <Image className="scanline" src={require("../../../assets/scanlines.png")}/>
@@ -121,16 +121,16 @@ const Pokedex = () => {
                     </Row>
                     <Row>
                         <h2 className="info">Description</h2>
-                        {(isLoading === false) ? <p className="info">{description}</p> : <LoadingSpinner/>}
+                        {(isLoading === false) ? <p className="info">{description}</p> : <></>}
                     </Row>
                 </Col>
                 <Col lg={6}>
-                    {(isLoading === false) ? <h1 className="info pokemon-name text-center">{pokemon.name} {"#" + pokemon.id}</h1> : <LoadingSpinner/>}
+                    {(isLoading === false) ? <h1 className="info pokemon-name text-center">{pokemon.name} {"#" + pokemon.id}</h1> : <></>}
                     
                     <h2 className="info">Type</h2>
                     {(isLoading === false) ? pokemon.types.map((data, index) => (
                         <span key={index} className={"type info " + data.type.name}>{data.type.name}</span>
-                    )) : <LoadingSpinner/>}
+                    )) : <></>}
 
                     <h2 className="info mt-4">Base stats</h2>
                     {(isLoading === false) ?
@@ -161,7 +161,7 @@ const Pokedex = () => {
                             </div>
                         </div>
                         :
-                        <LoadingSpinner/>
+                        <></>
                     }
                 </Col>
             </Row>

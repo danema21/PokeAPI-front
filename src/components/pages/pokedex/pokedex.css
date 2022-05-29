@@ -143,6 +143,12 @@
     opacity: 0.0;
 }
 
+.toy-btns{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
 .screen-layout {
     background-color: white;
     width: 250px;
