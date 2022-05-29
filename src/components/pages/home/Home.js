@@ -39,6 +39,7 @@ const Home = () => {
 
     return(
         <Container className="container" fluid>
+            <h1 className="text-center pokedex-invitation">Today's pokémon</h1>
             {(isLoading === false) ?
                 <Row>
                     <Col xs={12} sm={3} md={4}>
@@ -54,11 +55,13 @@ const Home = () => {
                     </Col>
                 </Row>
                 :
-                <LoadingSpinner/>
+                <div className="loading-placeholder">
+                    <LoadingSpinner/>
+                </div>
             }
             
             <div className="guess-form">
-                {hide ? <h1>???</h1> : <h1>It's {todayPokemon.name} {"#" + todayPokemon.id}</h1>}
+                {(isLoading===true || hide===true) ? <h1>???</h1> : <h1>It's {todayPokemon.name} {"#" + todayPokemon.id}</h1>}
                 <Button className="guess-btn shadow" onClick={showPokemon}>who's that pokémon?</Button>
             </div>
             
