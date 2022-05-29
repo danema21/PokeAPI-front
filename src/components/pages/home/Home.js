@@ -22,8 +22,8 @@ const Home = () => {
             setIsLoading(false);
             console.log(response.data);
         }).catch(e => {
-            setIsLoading(true);
             console.log(e);
+            retrievePokemon(id);
         });
     }
 

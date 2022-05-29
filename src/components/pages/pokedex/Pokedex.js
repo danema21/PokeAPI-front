@@ -30,28 +30,27 @@ const Pokedex = () => {
         setIsLoading(true);
         PokeAPIServices.get(id).then(response => {
             setPokemon(response.data);
-            setIsLoading(false);
             console.log(response.data);
         }).catch(e => {
-            setIsLoading(true);
             console.log(e);
         });
     }
 
     const getDescription = () => {
-        setIsLoading(true);
-        PokeAPIServices.getPokedexEntry(pokemon.id).then(response => {
-            let entriesArr = response.data.flavor_text_entries;
-            let i = 0;
-            while(i <= entriesArr.length && entriesArr[i].language.name != "en"){
-                i++;
-            }
-            setDescription(response.data.flavor_text_entries[i].flavor_text);
-            setIsLoading(false);
-        }).catch(e => {
-            setIsLoading(true);
-            console.log(e);
-        });
+        if(pokemon.id !== undefined){
+            PokeAPIServices.getPokedexEntry(pokemon.id).then(response => {
+                let entriesArr = response.data.flavor_text_entries;
+                let i = 0;
+                while(i <= entriesArr.length && entriesArr[i].language.name != "en"){
+                    i++;
+                }
+                setDescription(response.data.flavor_text_entries[i].flavor_text);
+                setIsLoading(false);
+            }).catch(e => {
+                setIsLoading(true);
+                console.log(e);
+            });
+        }
     }
 
     const getPokemonOfTheDay = () => {
