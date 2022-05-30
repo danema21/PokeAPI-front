@@ -18,7 +18,7 @@ const Documentation = () => {
                     Es necesario registrarse.
                 </p>
                 <p>
-                <Image className="d-block w-100" src={require("../../../assets/apiMarvel.png")}/>
+                <Image className="documentation-image" src={require("../../../assets/apiMarvel.png")}/>
                 </p>
 
                 <h3>1.2 PokéAPI</h3>
@@ -27,7 +27,7 @@ const Documentation = () => {
                     información de los Pokémon como sus movimientos, habilidades, tipos, poderes, hábitat y más.
                 </p>
                 <p>
-                <Image className="d-block w-100" src={require("../../../assets/pokeApi.png")}/>
+                <Image className="documentation-image" src={require("../../../assets/pokeApi.png")}/>
                 </p>
 
                 <h3>1.3 The Rick and Morty API</h3>
@@ -35,7 +35,7 @@ const Documentation = () => {
                     Nos permitirá acceder a datos sobre cientos de personajes, imágenes, ubicaciones y episodios.
                 </p>
                 <p>
-                <Image className="d-block w-100" src={require("../../../assets/apiRyM.png")}/>
+                <Image className="documentation-image" src={require("../../../assets/apiRyM.png")}/>
                 </p>
 
                 <h3>1.4 chucknorris.io</h3>
@@ -43,7 +43,7 @@ const Documentation = () => {
                     Permite seleccionar frases de manera aleatoria, por categorías y más.
                 </p>
                 <p>
-                <Image className="d-block w-100" src={require("../../../assets/apiChuck.png")}/>
+                <Image className="documentation-image" src={require("../../../assets/apiChuck.png")}/>
                 </p>
 
                 <h2>2. Selección de realidad a implementar:</h2>
@@ -59,35 +59,35 @@ const Documentation = () => {
                 <h2>3. Implementación:</h2>
                 <h3>3.1. Mockups:</h3>
                 <p>Se desarrollaron los siguientes mockups como base para la futura implementación:</p>
-                <Carousel>
+                <Carousel className="mb-3">
                     <Carousel.Item>
                         <img
-                        className="d-block w-100"
+                        className="documentation-image"
                         src={require("../../../assets/mockHome.png")}
                         alt="First slide"
                         />
                         <Carousel.Caption>
-                            <h4>Home Mockup</h4>
+                            <h4 className="title-carousel">Home Mockup</h4>
                         </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item>
                         <img
-                        className="d-block w-100"
+                        className="documentation-image"
                         src={require("../../../assets/mockPokedex.png")}
                         alt="Second slide"
                         />
                         <Carousel.Caption>
-                            <h4>Pokedex Mockup</h4>
+                            <h4 className="title-carousel">Pokedex Mockup</h4>
                         </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item>
                         <img
-                        className="d-block w-100"
+                        className="documentation-image"
                         src={require("../../../assets/mockDoc.png")}
                         alt="Third slide"
                         />
                         <Carousel.Caption>
-                            <h4>Documents Mockup</h4>
+                            <h4 className="title-carousel">Documents Mockup</h4>
                         </Carousel.Caption>
                     </Carousel.Item>
                 </Carousel>

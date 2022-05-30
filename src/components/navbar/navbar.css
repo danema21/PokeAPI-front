@@ -11,3 +11,11 @@
     font-size: larger;
     margin-left: 10px;
 }
+
+.selected-page {
+    font-size: larger;
+    margin-left: 10px;
+    text-decoration: underline !important;
+    text-decoration-thickness: 2px !important;
+    text-underline-offset: 15px;
+}
