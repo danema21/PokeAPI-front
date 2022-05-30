@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Col, Container, Row, Button, Image } from "react-bootstrap";
 import PokeAPIServices from "../../../services/PokeAPIServices";
+import LoadingSpinner from "../../loadingSpinner/LoadingSpinner";
 import "./pokedex.css";
 
 const Pokedex = () => {
@@ -9,10 +10,15 @@ const Pokedex = () => {
     const [pokemon, setPokemon] = useState({});
     const [description, setDescription] = useState("");
     const [defaultSprite, setDefaultSprite] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(()=>{
         getPokemonOfTheDay();
     }, []);
+
+    useEffect(()=>{
+        getDescription();
+    }, [pokemon]);
 
     const emptyData = () => {
         setPokemon({});
@@ -21,24 +27,30 @@ const Pokedex = () => {
 
     const retrievePokemon = (id) => {
         emptyData();
-
+        setIsLoading(true);
         PokeAPIServices.get(id).then(response => {
             setPokemon(response.data);
             console.log(response.data);
         }).catch(e => {
             console.log(e);
         });
+    }
 
-        PokeAPIServices.getPokedexEntry(id).then(response => {
-            let entriesArr = response.data.flavor_text_entries;
-            let i = 0;
-            while(i <= entriesArr.length && entriesArr[i].language.name != "en"){
-                i++;
-            }
-            setDescription(response.data.flavor_text_entries[i].flavor_text);
-        }).catch(e => {
-            console.log(e);
-        })
+    const getDescription = () => {
+        if(pokemon.id !== undefined){
+            PokeAPIServices.getPokedexEntry(pokemon.id).then(response => {
+                let entriesArr = response.data.flavor_text_entries;
+                let i = 0;
+                while(i <= entriesArr.length && entriesArr[i].language.name != "en"){
+                    i++;
+                }
+                setDescription(response.data.flavor_text_entries[i].flavor_text);
+                setIsLoading(false);
+            }).catch(e => {
+                setIsLoading(true);
+                console.log(e);
+            });
+        }
     }
 
     const getPokemonOfTheDay = () => {
@@ -47,13 +59,17 @@ const Pokedex = () => {
         retrievePokemon(pokemonId);
     }
 
-    //no funciona como debería, me da una lista de 20 pokemones en vez del buscado
+
     const searchPokemon = () => {
         emptyData();
+
+        setIsLoading(true);
         PokeAPIServices.getByName(search).then(response => {
             setPokemon(response.data);
+            setIsLoading(false);
             console.log(response.data);
         }).catch(e => {
+            setIsLoading(true);
             console.log(e);
         });
     }
@@ -65,7 +81,7 @@ const Pokedex = () => {
     }
 
     const nextPokemon = () => {
-        if(pokemon.id < 151){
+        if(pokemon.id < 898){
             retrievePokemon(pokemon.id + 1);
         }
     }
@@ -94,9 +110,9 @@ const Pokedex = () => {
                             </div>
                         </Col>
                         <Col sm={6}>
-                            <div className="screen-layout">
+                            <div className="screen-layout shadow">
                                 <div className="screen">
-                                    {pokemon.sprites && <Image src={defaultSprite ? pokemon.sprites.front_default : pokemon.sprites.back_default} alt="sprite.png" className="sprite" />}
+                                    {(isLoading === false && pokemon.sprites) ? <Image src={defaultSprite ? pokemon.sprites.front_default : pokemon.sprites.back_default} alt="sprite.png" className="sprite" /> : <LoadingSpinner/>}
                                     <Image className="scanline" src={require("../../../assets/scanlines.png")}/>
                                 </div>
                             </div>
@@ -104,44 +120,48 @@ const Pokedex = () => {
                     </Row>
                     <Row>
                         <h2 className="info">Description</h2>
-                        <p className="info">{description}</p>
+                        {(isLoading === false) ? <p className="info">{description}</p> : <></>}
                     </Row>
                 </Col>
                 <Col lg={6}>
-                    {pokemon.name && <h1 className="info pokemon-name">{pokemon.name} {"#" + pokemon.id}</h1>}
+                    {(isLoading === false) ? <h1 className="info pokemon-name text-center">{pokemon.name} {"#" + pokemon.id}</h1> : <></>}
                     
                     <h2 className="info">Type</h2>
-                    {pokemon.types && pokemon.types.map((data, index) => (
+                    {(isLoading === false) ? pokemon.types.map((data, index) => (
                         <span key={index} className={"type info " + data.type.name}>{data.type.name}</span>
-                    ))}
+                    )) : <></>}
 
                     <h2 className="info mt-4">Base stats</h2>
-                    <div className="ms-5 mt-4 me-5 mb-5">
-                        <div className="stat-row">
-                            <h4>Hp:</h4>
-                            <h4>{pokemon.stats && pokemon.stats[0].base_stat}</h4>
+                    {(isLoading === false) ?
+                        <div className="ms-5 mt-4 me-5 mb-5">
+                            <div className="stat-row">
+                                <h4>Hp:</h4>
+                                <h4>{pokemon.stats[0].base_stat}</h4>
+                            </div>
+                            <div className="stat-row">
+                                <h4>Attack:</h4>
+                                <h4>{pokemon.stats[1].base_stat}</h4>
+                            </div>
+                            <div className="stat-row">
+                                <h4>Defense:</h4>
+                                <h4>{pokemon.stats[2].base_stat}</h4>
+                            </div>
+                            <div className="stat-row">
+                                <h4>Special Attack:</h4>
+                                <h4>{pokemon.stats[3].base_stat}</h4>
+                            </div>
+                            <div className="stat-row">
+                                <h4>Special Defense:</h4>
+                                <h4>{pokemon.stats[4].base_stat}</h4>
+                            </div>
+                            <div className="stat-row">
+                                <h4>Speed:</h4>
+                                <h4>{pokemon.stats[5].base_stat}</h4>
+                            </div>
                         </div>
-                        <div className="stat-row">
-                            <h4>Attack:</h4>
-                            <h4>{pokemon.stats && pokemon.stats[1].base_stat}</h4>
-                        </div>
-                        <div className="stat-row">
-                            <h4>Defense:</h4>
-                            <h4>{pokemon.stats && pokemon.stats[2].base_stat}</h4>
-                        </div>
-                        <div className="stat-row">
-                            <h4>Special Attack:</h4>
-                            <h4>{pokemon.stats && pokemon.stats[3].base_stat}</h4>
-                        </div>
-                        <div className="stat-row">
-                            <h4>Special Defense:</h4>
-                            <h4>{pokemon.stats && pokemon.stats[4].base_stat}</h4>
-                        </div>
-                        <div className="stat-row">
-                            <h4>Speed:</h4>
-                            <h4>{pokemon.stats && pokemon.stats[5].base_stat}</h4>
-                        </div>
-                    </div>
+                        :
+                        <></>
+                    }
                 </Col>
             </Row>
             

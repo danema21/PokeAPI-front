@@ -6,8 +6,7 @@ const Documentation = () => {
 
     return(
         <Container>
-            <div className="text-documentation">
-
+            <div className="text-documentation shadow">
                 <h1>Pokédex React</h1>
 
                 <h2>1. Recursos investigados</h2>

@@ -2,23 +2,58 @@
     margin-top: 5vh;
 }
 
-.pokemon-image-col {
+.loading-placeholder{
     text-align: center;
+    height: 250px;
+}
+
+.pokemon-image-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+}
+
+@keyframes pokemonMove {
+    0%{
+        margin-top: 0px;
+    }
+    50%{
+        margin-top: 10px;
+    }
+    100%{
+        margin-top: 0px;
+    }
 }
 
 .pokemon-image-hidden {
     max-width: 250px !important;
     filter: brightness(0.0) !important;
+    animation: pokemonMove 1.5s linear infinite;
+    position: absolute;
+}
+
+@keyframes pokemonShow {
+    0%{
+        filter: brightness(0.0);
+    }
+    100%{
+        filter: brightness(1);
+    }
 }
 
 .pokemon-image {
     max-width: 250px !important;
+    filter: brightness(1);
+    animation: pokemonShow 0.5s linear ,pokemonMove 1.5s linear infinite;
+    position: absolute;
 }
 
 .pokedex-invitation-col {
     display: flex;
     align-items: center;
-    text-align: left;
+    text-align: center;
 }
 
 .pokedex-invitation-col div {
@@ -46,7 +81,6 @@
     border-radius: 100px !important;
     margin: 0 auto;
     margin-top: 20px;
-    margin-bottom: 60px;
 }
 
 .guess-btn:hover{
