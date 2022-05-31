@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/danema21/PokeAPI-front/static/css/main.9e461c57.css",
-    "main.js": "/danema21/PokeAPI-front/static/js/main.573db533.js",
-    "static/js/787.2498e293.chunk.js": "/danema21/PokeAPI-front/static/js/787.2498e293.chunk.js",
-    "static/media/apiRyM.png": "/danema21/PokeAPI-front/static/media/apiRyM.38fd5e4390f35933d907.png",
-    "static/media/mockPokedex.png": "/danema21/PokeAPI-front/static/media/mockPokedex.9b924e844aea99ca326e.png",
-    "static/media/pokemonLogo.png": "/danema21/PokeAPI-front/static/media/pokemonLogo.19685044cb80fe588306.png",
-    "static/media/mockDoc.png": "/danema21/PokeAPI-front/static/media/mockDoc.6ba3328510f3d1a464ff.png",
-    "static/media/apiMarvel.png": "/danema21/PokeAPI-front/static/media/apiMarvel.4ed7d97a9d7d9a818283.png",
-    "static/media/mockHome.png": "/danema21/PokeAPI-front/static/media/mockHome.6d92a52f123fcad0ee40.png",
-    "static/media/pikachu.jpg": "/danema21/PokeAPI-front/static/media/pikachu.66507f98b20dcdddb0d0.jpg",
-    "static/media/apiChuck.png": "/danema21/PokeAPI-front/static/media/apiChuck.896eab1a96527ddbb068.png",
-    "static/media/pokeApi.png": "/danema21/PokeAPI-front/static/media/pokeApi.fd646ed683822993d57f.png",
-    "static/media/scouter.png": "/danema21/PokeAPI-front/static/media/scouter.33409dc18136809e2346.png",
-    "static/media/scanlines.png": "/danema21/PokeAPI-front/static/media/scanlines.6d94e4688bbd63bec31d.png",
-    "index.html": "/danema21/PokeAPI-front/index.html",
-    "main.9e461c57.css.map": "/danema21/PokeAPI-front/static/css/main.9e461c57.css.map",
-    "main.573db533.js.map": "/danema21/PokeAPI-front/static/js/main.573db533.js.map",
-    "787.2498e293.chunk.js.map": "/danema21/PokeAPI-front/static/js/787.2498e293.chunk.js.map"
+    "main.css": "/PokeAPI-front/static/css/main.9e461c57.css",
+    "main.js": "/PokeAPI-front/static/js/main.3add68e6.js",
+    "static/js/787.2498e293.chunk.js": "/PokeAPI-front/static/js/787.2498e293.chunk.js",
+    "static/media/apiRyM.png": "/PokeAPI-front/static/media/apiRyM.38fd5e4390f35933d907.png",
+    "static/media/mockPokedex.png": "/PokeAPI-front/static/media/mockPokedex.9b924e844aea99ca326e.png",
+    "static/media/pokemonLogo.png": "/PokeAPI-front/static/media/pokemonLogo.19685044cb80fe588306.png",
+    "static/media/mockDoc.png": "/PokeAPI-front/static/media/mockDoc.6ba3328510f3d1a464ff.png",
+    "static/media/apiMarvel.png": "/PokeAPI-front/static/media/apiMarvel.4ed7d97a9d7d9a818283.png",
+    "static/media/mockHome.png": "/PokeAPI-front/static/media/mockHome.6d92a52f123fcad0ee40.png",
+    "static/media/pikachu.jpg": "/PokeAPI-front/static/media/pikachu.66507f98b20dcdddb0d0.jpg",
+    "static/media/apiChuck.png": "/PokeAPI-front/static/media/apiChuck.896eab1a96527ddbb068.png",
+    "static/media/pokeApi.png": "/PokeAPI-front/static/media/pokeApi.fd646ed683822993d57f.png",
+    "static/media/scouter.png": "/PokeAPI-front/static/media/scouter.33409dc18136809e2346.png",
+    "static/media/scanlines.png": "/PokeAPI-front/static/media/scanlines.6d94e4688bbd63bec31d.png",
+    "index.html": "/PokeAPI-front/index.html",
+    "main.9e461c57.css.map": "/PokeAPI-front/static/css/main.9e461c57.css.map",
+    "main.3add68e6.js.map": "/PokeAPI-front/static/js/main.3add68e6.js.map",
+    "787.2498e293.chunk.js.map": "/PokeAPI-front/static/js/787.2498e293.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9e461c57.css",
-    "static/js/main.573db533.js"
+    "static/js/main.3add68e6.js"
   ]
 }
