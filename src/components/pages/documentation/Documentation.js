@@ -114,8 +114,30 @@ const Documentation = () => {
                     <dt>react-polygon</dt>
                     <dd>React Polygon es un add-on para dibujar polígonos con cualquier 
                         número de lados y animarlos.</dd>
+
+                    <dt>gh-pages</dt>
+                    <dd>Librería para hacer deploys de apps de React en github pages.</dd>
                 </dl>
                 
+                <h2>4. Manual de uso</h2>
+                <p> Esta aplicación cuenta con una barra de navegación en la cual se pueden 
+                    elejir diferentes páginas para mostrar sin necesidad de refrescar el 
+                    navegador, estas páginas son Home, Pokédex y Documentation.</p>
+
+                <p> Home muestra una silueta del pokémon del día, invitando al usuario a
+                    adivinar cual es. Mediante un botón el usuario puede revelar el
+                    pokémon oculto.</p>
+
+                <p> Pokédex muestra los datos el pokémon del día, donde en una mini pantalla
+                    se muestra el sprite de batalla visto de frente y al lado hay una cruceta
+                    que podemos presionar arriba o abajo para cambiar la perspectiva del sprite
+                    e izquierda o derecha para cambiar al pokémon previo o siguiente. También
+                    se muestran datos como el nombre, id, stats base, stat promédio y un mapa de
+                    estadísticas poligonal para tener una visión más general del potencial del
+                    pokémon.</p>
+
+                <p> Documentation muestra el proceso por el que hubo que pasar primero para poder
+                    implementar esta realidad, asi como también un manual de uso para el usuario.</p>
             </div>
             
             <div className="fixed-wrapper">

@@ -11,7 +11,7 @@ function App() {
     <div className="app">
       <NavBar />
       <Routes>
-        <Route path="/" element={<Home />}/>
+        <Route path="/PokeAPI-front" element={<Home />}/>
         <Route path="/pokedex" element={<Pokedex />} />
         <Route path="/documentation" element={<Documentation />} />
       </Routes>
