@@ -22,3 +22,5 @@ Se debe tener [node](https://nodejs.org/es/) instalado.
 - [react-router-dom](https://reactrouter.com/) ➡ React Router es una biblioteca de enrutamiento del lado del servidor y del cliente con todas las funciones para React, una biblioteca de JavaScript para crear interfaces de usuario.
 
 - [react-polygon](https://github.com/peteroid/react-polygon) ➡ Un add-on para dibujar polígonos con cualquier número de lados y animarlos.
+
+- [gh-pages](https://github.com/gitname/react-gh-pages) ➡ Librería para hacer deploys de apps de React en github pages.
