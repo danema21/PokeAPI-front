@@ -5,7 +5,7 @@ import "./navbar.css";
 
 
 const NavBar = () => {
-    const [active, setActive] = useState(1);
+    const [active, setActive] = useState(0);
 
     return(
         <Navbar collapseOnSelect expand="sm" className="navbar-pokemon">

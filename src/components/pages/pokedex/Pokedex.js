@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Col, Container, Row, Button, Image } from "react-bootstrap";
 import PokeAPIServices from "../../../services/PokeAPIServices";
 import LoadingSpinner from "../../loadingSpinner/LoadingSpinner";
+import Polygon from "react-polygon";
 import "./pokedex.css";
 
 const Pokedex = () => {
@@ -86,6 +87,63 @@ const Pokedex = () => {
         }
     }
 
+    const renderPoint = (point) => (
+        <circle cx={point[0]} cy={point[1]} r={3} fill="lightgreen"/>
+    );
+
+    const renderPointText = (point, index) => {
+        let stat = "";
+        let x = point[0];
+        let y = point[1];
+
+        switch(index){
+            case 0:
+                stat = "Hp";
+                x -= 8;
+                y += 20;
+                break;
+            case 1:
+                stat = "Atk";
+                x -= 30;
+                y += 10;
+                break;
+            case 2:
+                stat = "Def";
+                x -= 30;
+                break;
+            case 3:
+                stat = "Sp.Atk";
+                x -= 24;
+                y -= 15;
+                break;
+            case 4:
+                stat = "Sp.Def";
+                x += 2;
+                break;
+            case 5:
+                stat = "Spd";
+                x += 3;
+                y += 10;
+                break;
+            default:
+                break;
+        }
+
+        return(
+            <text x={x} y={y} fill="brown">{stat}</text>
+        );
+    }
+
+    const overallStats = () => {
+        let average = 0;
+        for(let i=0; i < 6; i++){
+            average += pokemon.stats[i].base_stat;
+        }
+        average /= 6;
+
+        return Math.round(average);
+    }
+
     return(
         <Container>
             <Row>
@@ -164,6 +222,41 @@ const Pokedex = () => {
                     }
                 </Col>
             </Row>
+
+            <div className="text-center pb-5">
+                <h2 className="info text-start">
+                <Image src={require("../../../assets/scouter.png")} fluid className="scouter-img"/>
+                    Overall {(isLoading===false) ? overallStats() + " of 255": <></>}
+                </h2>
+                
+                {(isLoading===false) ?
+                    <div className="hexagon-container">
+                        <Polygon 
+                            n={6} 
+                            size={255} 
+                            fill="rgba(255,255,255, 0.3)"
+                            renderPoint={renderPointText}
+                            className="hex-background"
+                        />
+                        <Polygon 
+                            n={6} 
+                            size={255} 
+                            ratios={[
+                                (pokemon.stats[0].base_stat/255),
+                                (pokemon.stats[1].base_stat/255),
+                                (pokemon.stats[2].base_stat/255),
+                                (pokemon.stats[3].base_stat/255),
+                                (pokemon.stats[4].base_stat/255),
+                                (pokemon.stats[5].base_stat/255)
+                            ]}  
+                            renderPoint={renderPoint}
+                            className="hex-stats"
+                        />
+                    </div>
+                    :
+                    <LoadingSpinner/>
+                }
+            </div>
             
             <div className="footer fixed-bottom">©2022 Copyright Pokédex Tecnólogo en Informática</div>
         </Container>

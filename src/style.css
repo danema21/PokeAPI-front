@@ -3,10 +3,24 @@
     min-height: 100vh;
     height: 100%;
     width: 100%;
+    overflow-x: hidden;
 }
 
 .footer {
     text-align: center;
     font-size: x-small;
     background-color: #FFD600;
+}
+
+::-webkit-scrollbar{
+    width: 5px;
+}
+
+::-webkit-scrollbar-track{
+    background-color: #FFD600;
+}
+
+::-webkit-scrollbar-thumb{
+    background: black;
+    border-radius: 4px;
 }

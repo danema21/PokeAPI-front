@@ -99,14 +99,21 @@ const Documentation = () => {
                         Es mantenido por Facebook y la comunidad de software libre. En el proyecto hay más de 
                         mil desarrolladores libres.
                     </dd>
+                    
                     <dt>axios:</dt>
                     <dd>Cliente HTTP basado en promesas para el buscador y node.js.</dd>
-                    <dt>React-bootstrap:</dt>
+                    
+                    <dt>react-bootstrap:</dt>
                     <dd>El framework de front-end más popular reconstruido para React.</dd>
-                    <dt>React-router-dom:</dt>
+                    
+                    <dt>react-router-dom:</dt>
                     <dd>React Router es una biblioteca de enrutamiento del lado del servidor y 
                         del cliente con todas las funciones para React, una biblioteca de 
                         JavaScript para crear interfaces de usuario.</dd>
+                    
+                    <dt>react-polygon</dt>
+                    <dd>React Polygon es un add-on para dibujar polígonos con cualquier 
+                        número de lados y animarlos.</dd>
                 </dl>
                 
             </div>
