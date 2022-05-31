@@ -1,7 +1,7 @@
 import http from "../http-common";
 
-const getAll = () => {
-    return http.get("https://pokeapi.co/api/v2/pokemon");
+const getAll = (offset, limit) => {
+    return http.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`);
 }
 
 const get = (id) => {

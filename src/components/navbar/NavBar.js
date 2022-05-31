@@ -16,7 +16,8 @@ const NavBar = () => {
                     <Nav className="me-auto">
                         <Link to={"./PokeAPI-front"} className={active === 1 ? "nav-link active selected-page" : "nav-link"} onClick={() => setActive(1)}>Home</Link>
                         <Link to={"./pokedex"} className={active === 2 ? "nav-link active selected-page" : "nav-link"} onClick={() => setActive(2)}>Pokédex</Link>
-                        <Link to={"./documentation"} className={active === 3 ? "nav-link active selected-page" : "nav-link"} onClick={() => setActive(3)}>Documentation</Link>
+                        <Link to={"./resourses"} className={active === 3 ? "nav-link active selected-page" : "nav-link"} onClick={() => setActive(3)}>Resourses</Link>
+                        <Link to={"./documentation"} className={active === 4 ? "nav-link active selected-page" : "nav-link"} onClick={() => setActive(4)}>Documentation</Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
