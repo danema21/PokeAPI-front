@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/PokeAPI-front/static/css/main.9fc200f2.css",
-    "main.js": "/PokeAPI-front/static/js/main.312a4ff5.js",
+    "main.css": "/PokeAPI-front/static/css/main.ebe3d009.css",
+    "main.js": "/PokeAPI-front/static/js/main.a85d8b40.js",
     "static/js/787.2498e293.chunk.js": "/PokeAPI-front/static/js/787.2498e293.chunk.js",
     "static/media/apiRyM.png": "/PokeAPI-front/static/media/apiRyM.38fd5e4390f35933d907.png",
     "static/media/mockPokedex.png": "/PokeAPI-front/static/media/mockPokedex.9b924e844aea99ca326e.png",
@@ -15,12 +15,12 @@
     "static/media/scouter.png": "/PokeAPI-front/static/media/scouter.33409dc18136809e2346.png",
     "static/media/scanlines.png": "/PokeAPI-front/static/media/scanlines.6d94e4688bbd63bec31d.png",
     "index.html": "/PokeAPI-front/index.html",
-    "main.9fc200f2.css.map": "/PokeAPI-front/static/css/main.9fc200f2.css.map",
-    "main.312a4ff5.js.map": "/PokeAPI-front/static/js/main.312a4ff5.js.map",
+    "main.ebe3d009.css.map": "/PokeAPI-front/static/css/main.ebe3d009.css.map",
+    "main.a85d8b40.js.map": "/PokeAPI-front/static/js/main.a85d8b40.js.map",
     "787.2498e293.chunk.js.map": "/PokeAPI-front/static/js/787.2498e293.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9fc200f2.css",
-    "static/js/main.312a4ff5.js"
+    "static/css/main.ebe3d009.css",
+    "static/js/main.a85d8b40.js"
   ]
 }
