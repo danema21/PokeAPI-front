@@ -1,6 +1,6 @@
 import Home from "./components/pages/home/Home";
 import Pokedex from "./components/pages/pokedex/Pokedex";
-import Resourses from "./components/pages/resourses/Resourses";
+import Resources from "./components/pages/resources/Resources";
 import Documentation from "./components/pages/documentation/Documentation";
 import NavBar from "./components/navbar/NavBar";
 import "./style.css";
@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route path="/PokeAPI-front" element={<Home />}/>
         <Route path="/pokedex" element={<Pokedex />} />
-        <Route path="/resourses" element={<Resourses />} />
+        <Route path="/resources" element={<Resources />} />
         <Route path="/documentation" element={<Documentation />} />
       </Routes>
     </div>

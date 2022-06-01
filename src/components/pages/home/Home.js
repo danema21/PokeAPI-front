@@ -29,7 +29,7 @@ const Home = () => {
 
     const getPokemonOfTheDay = () => {
         const date = new Date();
-        const pokemonId = ((date.getFullYear() * date.getDate() * (date.getMonth()+1)) % 150) + 1;
+        const pokemonId = ((date.getFullYear() * date.getDate() * (date.getMonth()+1)) % 898) + 1;
         retrievePokemon(pokemonId);
     }
 
@@ -39,7 +39,7 @@ const Home = () => {
 
     return(
         <Container className="container" fluid>
-            <h1 className="text-center pokedex-invitation">Today's pokémon</h1>
+            <h1 className="text-center pokedex-invitation">El pokémon del día</h1>
             {(isLoading === false) ?
                 <Row>
                     <Col xs={12} sm={3} md={4}>
@@ -50,7 +50,7 @@ const Home = () => {
                     </Col>
                     <Col xs={12} sm={5} md={4} className="pokedex-invitation-col">
                         <div>
-                            <h3 className="pokedex-invitation">See more about it in the Pokédex.</h3>
+                            <h3 className="pokedex-invitation">Vea más información del pokémon en la pokédex.</h3>
                         </div>
                     </Col>
                 </Row>
@@ -61,8 +61,8 @@ const Home = () => {
             }
             
             <div className="guess-form">
-                {(isLoading===true || hide===true) ? <h1>???</h1> : <h1>It's {todayPokemon.name} {"#" + todayPokemon.id}</h1>}
-                <Button className="guess-btn shadow" onClick={showPokemon}>who's that pokémon?</Button>
+                {(isLoading===true || hide===true) ? <h1>???</h1> : <h1>Es {todayPokemon.name} {"#" + todayPokemon.id}</h1>}
+                <Button className="guess-btn shadow" onClick={showPokemon}>Cual es ese pokémon?</Button>
             </div>
             
             <div className="footer fixed-bottom">©2022 Copyright Pokédex Tecnólogo en Informática</div>

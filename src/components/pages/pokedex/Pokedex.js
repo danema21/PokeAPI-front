@@ -42,7 +42,7 @@ const Pokedex = () => {
             PokeAPIServices.getPokedexEntry(pokemon.id).then(response => {
                 let entriesArr = response.data.flavor_text_entries;
                 let i = 0;
-                while(i <= entriesArr.length && entriesArr[i].language.name != "en"){
+                while(i <= entriesArr.length && entriesArr[i].language.name != "es"){
                     i++;
                 }
                 setDescription(response.data.flavor_text_entries[i].flavor_text);
@@ -56,34 +56,40 @@ const Pokedex = () => {
 
     const getPokemonOfTheDay = () => {
         const date = new Date();
-        const pokemonId = ((date.getFullYear() * date.getDate() * (date.getMonth()+1)) % 150) + 1;
+        const pokemonId = ((date.getFullYear() * date.getDate() * (date.getMonth()+1)) % 898) + 1;
         retrievePokemon(pokemonId);
     }
 
 
     const searchPokemon = () => {
-        emptyData();
+        if(search !== ""){
+            emptyData();
 
-        setIsLoading(true);
-        PokeAPIServices.getByName(search).then(response => {
-            setPokemon(response.data);
-            setIsLoading(false);
-            console.log(response.data);
-        }).catch(e => {
             setIsLoading(true);
-            console.log(e);
-        });
+            PokeAPIServices.getByName(search.toLowerCase()).then(response => {
+                setPokemon(response.data);
+                setIsLoading(false);
+                console.log(response.data);
+            }).catch(e => {
+                setIsLoading(true);
+                console.log(e);
+            });
+        }
     }
 
     const prevPokemon = () => {
-        if(pokemon.id > 1){
-            retrievePokemon(pokemon.id - 1);
+        if(!isLoading){
+            if(pokemon.id > 1){
+                retrievePokemon(pokemon.id - 1);
+            }
         }
     }
 
     const nextPokemon = () => {
-        if(pokemon.id < 898){
-            retrievePokemon(pokemon.id + 1);
+        if(!isLoading){
+            if(pokemon.id < 898){
+                retrievePokemon(pokemon.id + 1);
+            }
         }
     }
 
@@ -98,32 +104,32 @@ const Pokedex = () => {
 
         switch(index){
             case 0:
-                stat = "Hp";
-                x -= 8;
-                y += 20;
+                stat = "Puntos de vida";
+                x -= 50;
+                y += 15;
                 break;
             case 1:
-                stat = "Atk";
-                x -= 30;
-                y += 10;
+                stat = "Atq";
+                x -= 15;
+                y += 5;
                 break;
             case 2:
                 stat = "Def";
-                x -= 30;
+                x -= 15;
                 break;
             case 3:
-                stat = "Sp.Atk";
+                stat = "Atq.Sp";
                 x -= 24;
-                y -= 15;
+                y -= 5;
                 break;
             case 4:
-                stat = "Sp.Def";
-                x += 2;
+                stat = "Def.Sp";
+                x -= 15;
                 break;
             case 5:
-                stat = "Spd";
-                x += 3;
-                y += 10;
+                stat = "Vel";
+                x -= 10;
+                y += 5;
                 break;
             default:
                 break;
@@ -150,8 +156,8 @@ const Pokedex = () => {
                 <Col lg={6}>
                     <Row className="mb-4">
                         <div className="search-form">
-                            <input type="text" placeholder="Search by name or ID..." onChange={(e) => setSearch(e.target.value)}/>
-                            <Button className="go-btn" onClick={searchPokemon}>Go</Button>
+                            <input type="text" placeholder="Busca por nombre o ID..." onChange={(e) => setSearch(e.target.value)}/>
+                            <Button className="go-btn" onClick={searchPokemon}>buscar</Button>
                         </div>
                     </Row>
                     <Row className="mb-4">
@@ -177,43 +183,43 @@ const Pokedex = () => {
                         </Col>
                     </Row>
                     <Row>
-                        <h2 className="info">Description</h2>
+                        <h2 className="info">Descripción</h2>
                         {(isLoading === false) ? <p className="info">{description}</p> : <></>}
                     </Row>
                 </Col>
                 <Col lg={6}>
                     {(isLoading === false) ? <h1 className="info pokemon-name text-center">{pokemon.name} {"#" + pokemon.id}</h1> : <></>}
                     
-                    <h2 className="info">Type</h2>
+                    <h2 className="info">Tipo</h2>
                     {(isLoading === false) ? pokemon.types.map((data, index) => (
                         <span key={index} className={"type info " + data.type.name}>{data.type.name}</span>
                     )) : <></>}
 
-                    <h2 className="info mt-4">Base stats</h2>
+                    <h2 className="info mt-4">Stats base</h2>
                     {(isLoading === false) ?
                         <div className="ms-5 mt-4 me-5 mb-5">
                             <div className="stat-row">
-                                <h4>Hp:</h4>
+                                <h4>Puntos de vida:</h4>
                                 <h4>{pokemon.stats[0].base_stat}</h4>
                             </div>
                             <div className="stat-row">
-                                <h4>Attack:</h4>
+                                <h4>Ataque:</h4>
                                 <h4>{pokemon.stats[1].base_stat}</h4>
                             </div>
                             <div className="stat-row">
-                                <h4>Defense:</h4>
+                                <h4>Defensa:</h4>
                                 <h4>{pokemon.stats[2].base_stat}</h4>
                             </div>
                             <div className="stat-row">
-                                <h4>Special Attack:</h4>
+                                <h4>Ataque Especial:</h4>
                                 <h4>{pokemon.stats[3].base_stat}</h4>
                             </div>
                             <div className="stat-row">
-                                <h4>Special Defense:</h4>
+                                <h4>Defensa Especial:</h4>
                                 <h4>{pokemon.stats[4].base_stat}</h4>
                             </div>
                             <div className="stat-row">
-                                <h4>Speed:</h4>
+                                <h4>Velocidad:</h4>
                                 <h4>{pokemon.stats[5].base_stat}</h4>
                             </div>
                         </div>
@@ -226,7 +232,7 @@ const Pokedex = () => {
             <div className="text-center pb-5">
                 <h2 className="info text-start">
                 <Image src={require("../../../assets/scouter.png")} fluid className="scouter-img"/>
-                    Overall {(isLoading===false) ? overallStats() + " of 255": <></>}
+                    Promedio: {(isLoading===false) ? overallStats() + " of 255": <></>}
                 </h2>
                 
                 {(isLoading===false) ?
