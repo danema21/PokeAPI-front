@@ -140,7 +140,14 @@
 }
 
 .toy-btn {
-    opacity: 0.0;
+    opacity: 0.1;
+    border-radius: 10px !important;
+    background-color: black !important;
+    border: none !important;
+}
+
+.toy-btn:hover{
+    background-color: white !important
 }
 
 .toy-btns{
@@ -155,7 +162,8 @@
     height: 250px;
     margin: 0 auto;
     border-radius: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    filter:brightness(1.8);
 }
 
 .screen {
@@ -164,7 +172,7 @@
     width: 95%;
     height: 95%;
     margin: 6px auto;
-    border: 1px solid rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -175,7 +183,6 @@
     height: 234px;
     position: absolute;
     border-radius: 3px;
-    opacity: 0.4;
 }
 
 .sprite {
@@ -184,7 +191,7 @@
 }
 
 .info {
-    margin-left: 20px;
+    margin-left:15px;
     color: black;
 }
 
@@ -212,8 +219,8 @@
     width: 150px;
     margin-bottom: -50px;
     margin-top: -50px;
-    margin-right: -20px;
-    margin-left: -20px;
+    margin-right: -35px;
+    margin-left: -35px;
 }
 
 .hexagon-container{

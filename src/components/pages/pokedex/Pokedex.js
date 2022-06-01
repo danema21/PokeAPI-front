@@ -62,18 +62,34 @@ const Pokedex = () => {
 
 
     const searchPokemon = () => {
-        if(search !== ""){
-            emptyData();
-
-            setIsLoading(true);
-            PokeAPIServices.getByName(search.toLowerCase()).then(response => {
-                setPokemon(response.data);
-                setIsLoading(false);
-                console.log(response.data);
-            }).catch(e => {
+        if(search.trim().length !== 0){
+            let id = Number(search);
+            if(!id){
+                emptyData();
                 setIsLoading(true);
-                console.log(e);
-            });
+                PokeAPIServices.getByName(search.toLowerCase()).then(response => {
+                    setPokemon(response.data);
+                    setIsLoading(false);
+                    console.log(response.data);
+                }).catch(e => {
+                    setIsLoading(true);
+                    console.log(e);
+                });
+            }else{
+                let newNumber = Math.floor(id);
+                if(newNumber > 0 && newNumber <=898){
+                    emptyData();
+                    setIsLoading(true);
+                    PokeAPIServices.getByName(newNumber).then(response => {
+                        setPokemon(response.data);
+                        setIsLoading(false);
+                        console.log(response.data);
+                    }).catch(e => {
+                        setIsLoading(true);
+                        console.log(e);
+                    });
+                }
+            }
         }
     }
 
@@ -232,7 +248,7 @@ const Pokedex = () => {
             <div className="text-center pb-5">
                 <h2 className="info text-start">
                 <Image src={require("../../../assets/scouter.png")} fluid className="scouter-img"/>
-                    Promedio: {(isLoading===false) ? overallStats() + " of 255": <></>}
+                    Promedio {(isLoading===false) ? overallStats() + " de 255": <></>}
                 </h2>
                 
                 {(isLoading===false) ?
