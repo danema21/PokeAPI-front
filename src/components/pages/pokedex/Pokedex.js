@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Col, Container, Row, Button, Image } from "react-bootstrap";
+import { Col, Container, Row, Button, Image, ProgressBar } from "react-bootstrap";
 import PokeAPIServices from "../../../services/PokeAPIServices";
 import LoadingSpinner from "../../loadingSpinner/LoadingSpinner";
 import Polygon from "react-polygon";
@@ -161,9 +161,9 @@ const Pokedex = () => {
         for(let i=0; i < 6; i++){
             average += pokemon.stats[i].base_stat;
         }
-        average /= 6;
+        average /= 720;
 
-        return Math.round(average);
+        return Math.round(average*100);
     }
 
     return(
@@ -201,6 +201,10 @@ const Pokedex = () => {
                     <Row>
                         <h2 className="info">Descripción</h2>
                         {(isLoading === false) ? <p className="info">{description}</p> : <></>}
+                        <h2 className="info d-flex align-items-center justify-content-start">
+                            <Image src={require("../../../assets/scouter.png")} fluid className="scouter-img"/>
+                            <ProgressBar now={(isLoading===false) ? overallStats() : 0} label={(isLoading===false) ? `${overallStats()}%` : "cargando..."} className="w-75 bg-dark" variant="info" animated/>
+                        </h2>
                     </Row>
                 </Col>
                 <Col lg={6}>
@@ -213,7 +217,7 @@ const Pokedex = () => {
 
                     <h2 className="info mt-4">Stats base</h2>
                     {(isLoading === false) ?
-                        <div className="ms-5 mt-4 me-5 mb-5">
+                        <div className="ms-5 mt-4 me-5 mb-3">
                             <div className="stat-row">
                                 <h4>Puntos de vida:</h4>
                                 <h4>{pokemon.stats[0].base_stat}</h4>
@@ -246,11 +250,6 @@ const Pokedex = () => {
             </Row>
 
             <div className="text-center pb-5">
-                <h2 className="info text-start">
-                <Image src={require("../../../assets/scouter.png")} fluid className="scouter-img"/>
-                    Promedio {(isLoading===false) ? overallStats() + " de 255": <></>}
-                </h2>
-                
                 {(isLoading===false) ?
                     <div className="hexagon-container">
                         <Polygon 

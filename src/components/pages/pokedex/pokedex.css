@@ -220,7 +220,18 @@
     margin-bottom: -50px;
     margin-top: -50px;
     margin-right: -35px;
-    margin-left: -35px;
+    margin-left: -45px;
+}
+
+.progress{
+    height: 45% !important;
+    padding: 4px;
+}
+
+.progress-bar{
+    color: darkcyan !important;
+    font-size: x-large;
+    font-weight: bold;
 }
 
 .hexagon-container{

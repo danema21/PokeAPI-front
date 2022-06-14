@@ -132,7 +132,7 @@ const Documentation = () => {
                     se muestra el sprite de batalla visto de frente y al lado a la izquierda
                     hay una cruceta que podemos presionar arriba y abajo para cambiar la perspectiva
                     del sprite e izquierda y derecha para cambiar al pokémon previo o siguiente. También
-                    se muestran datos como el nombre, id, stats base, stat promédio y un mapa de
+                    se muestran datos como el nombre, id, stats base, porcentaje de fuerza y un mapa de
                     estadísticas poligonal para tener una visión más general del potencial del
                     pokémon.</p>
 
